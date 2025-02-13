@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Advanced C# Events")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a594e382ff2ee6ef73fa6a409e1f488e4dac8d33")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d841e692382a0f28ed133c671ac7198f6717c670")]
 [assembly: System.Reflection.AssemblyProductAttribute("Advanced C# Events")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Advanced C# Events")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

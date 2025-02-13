@@ -1,12 +1,11 @@
 ﻿namespace Advanced_C__Events
 {
-    public delegate void VideoUpload(string videoTitle);
-
     internal class Program
     {
         static void Main(string[] args)
         {
-            YoutubeChannel programmingAdvices = new();
+            YoutubeChannel programmingAdvices = new("Programming Advices");
+            YoutubeChannel elzero = new("Elzero");
 
             Subscriber ahmad = new("ahmad");
             Subscriber khaled = new("khaled");
@@ -16,25 +15,23 @@
             khaled.SubscribeToChannel(programmingAdvices);
             abdullah.SubscribeToChannel(programmingAdvices);
 
-            while (true)
-            {
-                string? videoTitle = Console.ReadLine();
+            abdullah.SubscribeToChannel(elzero);
+            // ahmad.UnsubscribeToChannel(programmingAdvices);
 
-                if (!string.IsNullOrEmpty(videoTitle))
-                {
-                    programmingAdvices.UploadVideo(videoTitle);
-                }
-            }
+            programmingAdvices.UploadVideo("Strings", 6);
+            elzero.UploadVideo("css", 10);
         }
 
-        class YoutubeChannel
+        class YoutubeChannel(string name)
         {
-            public event VideoUpload videoUpload;
+            public event EventHandler<VideoInfoEventArgs> videoUpload;
 
-            public void UploadVideo(string videoTitle)
+            public string Name { get; set; } = name;
+
+            public void UploadVideo(string videoTitle, int videoDuration)
             {
                 Console.WriteLine($"New video uploaded: {videoTitle}");
-                videoUpload(videoTitle);
+                videoUpload?.Invoke(this, new() { Title = videoTitle, Duration = videoDuration, });
             }
         }
 
@@ -52,10 +49,24 @@
                 channel.videoUpload += WatchVideo;
             }
 
-            public void WatchVideo(string videoTitle)
+            public void UnsubscribeToChannel(YoutubeChannel channel)
             {
-                Console.WriteLine($"{Name} is watching {videoTitle}");
+                channel.videoUpload -= WatchVideo;
             }
+
+            public void WatchVideo(object sender, VideoInfoEventArgs videoInfo)
+            {
+                YoutubeChannel channel = (YoutubeChannel)sender;
+                Console.WriteLine(
+                    $"{Name} is watching {videoInfo.Title}, which is {videoInfo.Duration} long, from {channel.Name}"
+                );
+            }
+        }
+
+        public class VideoInfoEventArgs : EventArgs
+        {
+            public string Title { get; set; } = null!;
+            public int Duration { get; set; }
         }
     }
 }

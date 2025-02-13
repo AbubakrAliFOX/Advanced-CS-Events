@@ -12,3 +12,4 @@ E:\Downloads\WebDev\Demos\Advanced C# Events\obj\Debug\net8.0\refint\Advanced C#
 E:\Downloads\WebDev\Demos\Advanced C# Events\obj\Debug\net8.0\Advanced C# Events.pdb
 E:\Downloads\WebDev\Demos\Advanced C# Events\obj\Debug\net8.0\Advanced C# Events.genruntimeconfig.cache
 E:\Downloads\WebDev\Demos\Advanced C# Events\obj\Debug\net8.0\ref\Advanced C# Events.dll
+E:\Downloads\WebDev\Demos\Advanced C# Events\obj\Debug\net8.0\Advanced C# Events.sourcelink.json
